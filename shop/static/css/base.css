@@ -163,6 +163,21 @@ ul.errorlist {
     overflow:hidden;
 }
 
+/* The Magic Float Center Code */
+#content .float_center {
+  float: right;
+
+  position: relative;
+  left: -25%; /* or right 50% */
+  text-align: left;
+}
+.float_center > .child {
+  position: relative;
+  left: 150%;
+}
+
+
+
 #sidebar {
     width:220px;
     padding:30px 20px 0 0;

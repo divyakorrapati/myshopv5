@@ -71,7 +71,7 @@ def product_detail(request, id, slug):
     else:
         comment_form = CommentForm()
 
-        return render(request,
+    return render(request,
                       'shop/product/detail.html',
                       {'product': product,
                        'comments': comments,

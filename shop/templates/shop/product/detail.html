@@ -1,4 +1,5 @@
 {% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}
@@ -19,8 +20,9 @@
       <input type="submit" value="Add to cart">
     </form>
   </div>
-    <div class="commenting">
-    <style float="right"></style>
+    <div class="float_center">
+    <div class="col-md-4">
+
     {% with comments.count as total_comments %}
       <h2>
          {{ total_comments }} comment{{ total_comments|pluralize }}
@@ -48,5 +50,6 @@
          <p><input type="submit" value="Add comment"></p>
        </form>
     {% endif %}
+    </div>
     </div>
 {% endblock %}
