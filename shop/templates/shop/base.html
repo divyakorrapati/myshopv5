@@ -19,6 +19,13 @@
           <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
         </li>
       {% endfor %} </li>
+   <li><a href="">About</a></li>
+               <li><a href="">Contactus</a></li>
+                <li><a href="{% url 'shop:product_list' %}">Special Deals</a></li>
+           <li> <form action="" method="GET" accept-charset="utf-8">
+		<input name="q" type="text" placeholder="Search Products" value= "{{ request.GET.q }}" id="search_prod"/>
+			<input type="submit" value="Search" class="btn" />
+	</form></li>
     <li><div class="cart">
       {% with total_items=cart|length %}
           {% if cart|length > 0 %}
