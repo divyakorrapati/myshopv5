@@ -2,14 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from django.contrib import messages
-from .forms import LoginForm, UserRegistrationForm, \
-                   UserEditForm
 from .forms import *
 from .models import Category, Product
 from .models import Product, Comment
 from .forms import CommentForm
 from cart.forms import CartAddProductForm
+from django.db.models import Q
 
 def register(request):
     if request.method == 'POST':
@@ -31,6 +29,12 @@ def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
+    query = request.GET.get('q')
+    if query:
+        products = products.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query)
+        )
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
