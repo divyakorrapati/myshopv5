@@ -34,7 +34,7 @@ a.button.light {
 }
 
 .text-left {
-    text-align:left;
+    text-align:right;
 }
 
 .text-right {
@@ -162,7 +162,21 @@ ul.errorlist {
     padding:0 100px;
     overflow:hidden;
 }
+#content .commenting
+{
+    text-align: center;
+    width:220px;
+}
+#content .product-detail
+{
+    text-align: right;
+    padding: 0;
+}
 
+.comment
+{
+    float: left;
+}
 #sidebar {
     width:220px;
     padding:30px 20px 0 0;
@@ -214,7 +228,7 @@ ul.errorlist {
 }
 
 .product-detail {
-    text-align:justify;
+    text-align:center;
 }
 
 .product-detail .price {
@@ -225,15 +239,17 @@ ul.errorlist {
 
 .product-detail img {
     width:40%;
-    float:left;
+    float:right;
     padding:0 20px 20px 0;
 }
 
 .product-detail h1 {
-    margin-bottom:0;
+    text-align: right;
+    margin-bottom: 10px;
 }
 
 .product-detail h2 {
+    text-align: right;
     margin-top:10px;
 }
 
@@ -343,4 +359,9 @@ form div.field {
     background:#efefef;
     color:#666;
     border-radius:4px;
+}
+
+.post {
+    margin-bottom: 70px;
+
 }

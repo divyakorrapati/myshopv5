@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Comment
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -22,3 +23,7 @@ class UserEditForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model =Comment
+        fields = ('name', 'email', 'body')

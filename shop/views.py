@@ -7,6 +7,8 @@ from .forms import LoginForm, UserRegistrationForm, \
                    UserEditForm
 from .forms import *
 from .models import Category, Product
+from .models import Product, Comment
+from .forms import CommentForm
 from cart.forms import CartAddProductForm
 
 def register(request):
@@ -44,11 +46,34 @@ def product_detail(request, id, slug):
                                 id=id,
                                 slug=slug,
                                 available=True)
+
     cart_product_form = CartAddProductForm()
-    return render(request,
-                  'shop/product/detail.html',
-                  {'product': product,
-                   'cart_product_form': cart_product_form})
+
+    # List of active comments for this post
+    comments = product.comments.filter(active=True)
+
+    new_comment = None
+
+    if request.method == 'POST':
+        # A comment was posted
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.post = product
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+        return render(request,
+                      'shop/product/detail.html',
+                      {'product': product,
+                       'comments': comments,
+                       'new_comment': new_comment,
+                       'comment_form': comment_form,
+                       'cart_product_form': cart_product_form})
 
 def user_login(request):
     if request.method == 'POST':
@@ -70,3 +95,5 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'registration/login.html', {'form': form})
+
+
