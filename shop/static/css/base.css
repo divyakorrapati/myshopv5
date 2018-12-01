@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
-body { 
+body {
     margin:0;
     padding:0;
     font-family:helvetica, sans-serif; 
@@ -117,23 +117,23 @@ ul.errorlist {
 
 
 #header {
-    padding:10px 100px;
-    font-size:18px;
+    padding:10px 10px;
+    font-size:12px;
     overflow:auto;
 }
 
 #subheader {
-    background:#ececec;
+    background:#000000;
     color:#444;
-    padding:1px 100px;
+    padding: 1px 1px;
     overflow:auto;
 }
 
 #subheader li{
      text-align: center;
      display: inline-block;
-    padding:10px 10px 10px 10px;
-    font-size:20px;
+    padding:1px 5px 10px 1px;
+    font-size:17px;
     overflow:auto;
 
 }
@@ -143,6 +143,24 @@ ul.errorlist {
 }
 
 #subheader li.selected a {
+    color:#fff;
+}
+
+#subheader li2{
+     text-align: center;
+     display: inline-block;
+    padding:1px 25px 1px 1px;
+
+    font-size:20px;
+    overflow:auto;
+
+}
+#subheader li2.selected {
+    background:#5993bb;
+    border-radius:4px;
+}
+
+#subheader li2.selected a {
     color:#fff;
 }
 #header .logo {
@@ -161,12 +179,12 @@ ul.errorlist {
 #content {
     padding:0 100px;
     overflow:hidden;
+   /* background-image: url('bg.jpg');*/
 }
 
 /* The Magic Float Center Code */
 #content .float_center {
   float: right;
-
   position: relative;
   left: -25%; /* or right 50% */
   text-align: left;
