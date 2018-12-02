@@ -10,15 +10,11 @@
   <div id="subheader">
   <ul id="ul li">
       <li><a class="navbar-brand"  href="{% url "shop:product_list" %}"><img width="50px" src="{% static 'img/V5Logo.png' %}"> </a> <span><a class="logo" href="{% url "shop:product_list" %}">V5 Clothing</a></span></li>
-    <li {% if not category %}class="selected"{% endif %}>
-        <a href="{% url "shop:product_list" %}">Home</a>
-    </li>
-  <li>
-      {% for c in categories %}
-        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
-          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-        </li>
-      {% endfor %} </li>
+
+           <li> <form action="" method="GET" accept-charset="utf-8">
+		<input name="q" type="text" placeholder="Search Products" style="width: 500px "  value= "{{ request.GET.q }}" id="search_prod"/>
+			<input type="submit"  value="Search" class="btn" />
+	</form></li>
     <li><div class="cart">
       {% with total_items=cart|length %}
           {% if cart|length > 0 %}
@@ -30,7 +26,7 @@
           {% else %}
             <img alt="Your cart" width="25" height="25" src="{% static 'img/cart.png' %}">
           {% endif %}</div></li>
-         <li> <ul class="nav navbar-nav navbar-right">
+         <li>
                 {% if user.is_authenticated %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -43,12 +39,26 @@
                     <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li><a href="{% url 'shop:register' %}"><i class="glyphicon glyphicon-log-in"></i>SignUp</a></li>
                 {% endif %}
-          </ul>
-      {% endwith %}</li>
+         {% endwith %} </ul>
+          <ul id="ul li2" >
+          <li2 {% if not category %}class="selected"{% endif %}>
+        <a href="{% url "shop:product_list" %}">Home</a>
+    </li2>
+
+      {% for c in categories %}
+        <li2 {% if category.slug == c.slug %}class="selected"{% endif %}>
+          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li2>
+      {% endfor %}
+   <li2><a href="about.html">Aboutus</a></li2>
+               <li2><a href="">Contactus</a></li2>
+                <li2><a href="{% url 'shop:product_list' %}">Special Deals</a></li2>
+      </li2>
     </ul>
     </div>
   <div id="content">
     {% block content %}
+
     {% endblock %}
   </div>
 </body>

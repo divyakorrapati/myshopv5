@@ -32,8 +32,9 @@
             <td>{{ product.name }}</td>
             <td>
               <form action="{% url "cart:cart_add" product.id %}" method="post">
-                {{ item.quantity }}
-
+                  {{ item.update_quantity_form.quantity }}
+                  {{ item.update_quantity_form.update }}
+                  <input type="submit" value="Update">
                 {% csrf_token %}
               </form>
             </td>
@@ -59,7 +60,7 @@
             ({{ cart.coupon.discount }}% off)
           </td>
           <td colspan="6"></td>
-          <td class=""num neg">
+          <td class="num neg">
             - ${{ cart.get_discount|floatformat:"2" }}
           </td>
         </tr>
