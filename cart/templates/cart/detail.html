@@ -32,9 +32,9 @@
             <td>{{ product.name }}</td>
             <td>
               <form action="{% url "cart:cart_add" product.id %}" method="post">
-                  {{ item.update_quantity_form.quantity }}
-                  {{ item.update_quantity_form.update }}
-                  <input type="submit" value="Update">
+                {{ item.update_quantity_form.quantity }}
+                {{ item.update_quantity_form.update }}
+                <input type="submit" value="Update">
                 {% csrf_token %}
               </form>
             </td>
@@ -74,7 +74,7 @@
       </tr>
     </tbody>
   </table>
-  {% if recommended_products %}
+  <!--{% if recommended_products %}
     <div class="recommendations cart">
       <h3>People who bought this also bought</h3>
       {% for p in recommended_products %}
@@ -86,7 +86,7 @@
         </div>
       {% endfor %}
     </div>
-  {% endif %}
+  {% endif %}-->
   <p>Have a coupon. Apply here:</p>
   <form action="{% url "coupons:apply" %}" method="post">
     {{ coupon_apply_form }}
