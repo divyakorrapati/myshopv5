@@ -7,12 +7,8 @@ from .models import Category, Product
 from .models import Product, Comment
 from .forms import CommentForm
 from cart.forms import CartAddProductForm
-<<<<<<< HEAD
-from .recommender import Recommender
-
-=======
+#from .recommender import Recommender
 from django.db.models import Q
->>>>>>> 29d5d369e4acbdd535813428623f08e2a371188d
 
 def register(request):
     if request.method == 'POST':
@@ -57,15 +53,6 @@ def product_detail(request, id, slug):
                                 available=True)
 
     cart_product_form = CartAddProductForm()
-<<<<<<< HEAD
-    r = Recommender()
-    recommended_products = r.suggest_products_for([product], 4)
-    return render(request,
-                  'shop/product/detail.html',
-                  {'product': product,
-                   'cart_product_form': cart_product_form,
-                   'recommended_products': recommended_products})
-=======
 
     # List of active comments for this post
     comments = product.comments.filter(active=True)
@@ -92,7 +79,6 @@ def product_detail(request, id, slug):
                        'new_comment': new_comment,
                        'comment_form': comment_form,
                        'cart_product_form': cart_product_form})
->>>>>>> 29d5d369e4acbdd535813428623f08e2a371188d
 
 def user_login(request):
     if request.method == 'POST':

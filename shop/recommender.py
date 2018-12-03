@@ -1,4 +1,4 @@
-import redis
+"""import redis
 from django.conf import settings
 from .models import Product
 
@@ -56,4 +56,4 @@ class Recommender(object):
 
     def clear_purchases(self):
             for id in Product.objects.values_list('id', flat=True):
-                r.delete(self.get_product_key(id))
+                r.delete(self.get_product_key(id))"""
