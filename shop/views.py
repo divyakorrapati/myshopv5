@@ -7,6 +7,7 @@ from .models import Category, Product
 from .models import Product, Comment
 from .forms import CommentForm
 from cart.forms import CartAddProductForm
+#from .recommender import Recommender
 from django.db.models import Q
 
 def register(request):
