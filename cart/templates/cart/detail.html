@@ -12,12 +12,13 @@
       <tr>
         <th>Image</th>
         <th>Product</th>
-        <th>Quantity</th>
-        <th>Size</th>
-        <th>Color</th>
-        <th>Remove</th>
-        <th>Unit price</th>
-        <th>Price</th>
+          <th>Quantity </th>
+          <th>Size</th>
+          <th>Color</th>
+          <th>   </th>
+          <th>Remove</th>
+          <th>Unit price</th>
+          <th>Price</th>
       </tr>
     </thead>
     <tbody>
@@ -33,15 +34,13 @@
             <td>
               <form action="{% url "cart:cart_add" product.id %}" method="post">
                   {{ item.update_quantity_form.quantity }}
-                  {{ item.update_quantity_form.update }}
-                  <input type="submit" value="Update">
-                {% csrf_token %}
+              <td> {{ item.update_quantity_form.size }}</td>
+              <td> {{ item.update_quantity_form.color }}</td>
+                   {{ item.update_quantity_form.update }}
+                  <td><input type="submit" value="Update"></td>
+                  {% csrf_token %}
               </form>
             </td>
-            <td><form action="{% url "cart:cart_add" product.id %}" method="post">
-                {{ item.size }}</form></td>
-            <td><form action="{% url "cart:cart_add" product.id %}" method="post">
-                {{ item.color }}</form></td>
             <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>
             <td class="num">${{ item.price }}</td>
             <td class="num">${{ item.total_price }}</td>
@@ -51,7 +50,7 @@
       {% if cart.coupon %}
         <tr class="subtotal">
           <td>Subtotal</td>
-          <td colspan="6"></td>
+          <td colspan="7"></td>
           <td class="num">${{ cart.get_total_price|floatformat:"2" }}</td>
         </tr>
         <tr>
@@ -59,7 +58,7 @@
             "{{ cart.coupon.code }}" coupon
             ({{ cart.coupon.discount }}% off)
           </td>
-          <td colspan="6"></td>
+          <td colspan="7"></td>
           <td class="num neg">
             - ${{ cart.get_discount|floatformat:"2" }}
           </td>
@@ -67,7 +66,7 @@
       {% endif %}
       <tr class="total">
         <td>Total</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
         <td class="num">
           ${{ cart.get_total_price_after_discount|floatformat:"2" }}
         </td>
