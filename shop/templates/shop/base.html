@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <title><h3>{% block title %}V5 Clothing</h3>{% endblock %}</title>
   <link href="{% static "css/base.css" %}" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 </head>
 <body>
   <div id="subheader">
@@ -61,5 +62,6 @@
 
     {% endblock %}
   </div>
+   <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
 </body>
 </html>

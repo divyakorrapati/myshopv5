@@ -1,6 +1,6 @@
 {% extends "shop/base.html" %}
 {% load static %}
-
+{% load ratings %}
 {% block title %}
   {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
@@ -30,6 +30,8 @@
         ${{ product.price }},
         {{ product.size }},
         {{ product.color }}
+        <p>{{ ratings.count }}</p>
+          {% ratings product  %} </p>
       </div>
     {% endfor %}
   </div>

@@ -1,5 +1,6 @@
 {% extends "shop/base.html" %}
 {% load crispy_forms_tags %}
+{% load ratings %}
 {% load static %}
 
 {% block title %}
@@ -19,9 +20,10 @@
       <input type="submit" value="Add to cart">
     </form>
   </div>
+
     <div class="float_center">
     <div class="col-md-4">
-
+    <p> {% ratings product   %} </p>
     {% with comments.count as total_comments %}
       <h2>
          {{ total_comments }} comment{{ total_comments|pluralize }}
