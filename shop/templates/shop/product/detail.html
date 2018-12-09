@@ -9,7 +9,25 @@
 
 {% block content %}
   <div class="product-detail">
-    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.zoom {
+    padding: 50px;
+    transition: transform .2s;
+    ;
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);
+}</style>
+  <div class="zoom">
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"></div>
     <h1>{{ product.name }}</h1>
     <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
     <p class="price">${{ product.price }}</p>
