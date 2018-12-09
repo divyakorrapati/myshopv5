@@ -20,10 +20,11 @@
       <input type="submit" value="Add to cart">
     </form>
   </div>
-
     <div class="float_center">
     <div class="col-md-4">
-    <p> {% ratings product   %} </p>
+   {% ratings product   %}
+    <button onclick="myFunction()">Comment ?</button>
+        <div id="myDIV" style="display: none">
     {% with comments.count as total_comments %}
       <h2>
          {{ total_comments }} comment{{ total_comments|pluralize }}
@@ -51,6 +52,18 @@
          <p><input type="submit" value="Add comment"></p>
        </form>
     {% endif %}
+    </div>
+    <script>
+   function myFunction() {
+       var x = document.getElementById("myDIV");
+       if (x.style.display === "none") {
+        x.style.display = "block";
+       }
+       else {
+        x.style.display = "none";
+       }
+       }
+    </script>
     </div>
     </div>
 {% endblock %}

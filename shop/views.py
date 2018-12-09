@@ -102,3 +102,10 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'registration/login.html', {'form': form})
 
+
+def about(request):
+ return render(request,'shop/about.html',{})
+
+
+def contact(request):
+ return render(request,'shop/contact.html',{})
