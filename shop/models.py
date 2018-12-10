@@ -1,6 +1,11 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.urls import reverse
+from django.contrib.contenttypes.models import ContentType
+
+
+
+
 SIZE_CHOICES = [(j, str(j)) for j in ['XS','S','M','L','XL','XXL']]
 COLOR_CHOICES = [(k, str(k)) for k in ['Green','Blue','Red','Orange','Yellow','Black','White']]
 

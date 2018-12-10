@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <title><h3>{% block title %}V5 Clothing</h3>{% endblock %}</title>
   <link href="{% static "css/base.css" %}" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 </head>
 <body>
   <div id="subheader">
@@ -50,9 +51,9 @@
           <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
         </li2>
       {% endfor %}
-   <li2><a href="">About Us</a></li2>
-               <li2><a href="">Contact Us</a></li2>
-                <li2><a href="{% url 'shop:product_list' %}">Special Deals</a></li2>
+   <li2><a href="{% url "shop:about" %}">About Us</a></li2>
+               <li2><a href="{% url "shop:contact" %}">Contact Us</a></li2>
+                <li2><a href="{% url "shop:product_list" %}">Special Deals</a></li2>
       </li2>
     </ul>
     </div>
@@ -61,5 +62,6 @@
 
     {% endblock %}
   </div>
+   <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
 </body>
 </html>

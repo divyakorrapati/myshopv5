@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'payment.apps.PaymentConfig',
     'coupons.apps.CouponsConfig',
+    'star_ratings',
 ]
 
 

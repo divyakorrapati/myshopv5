@@ -10,6 +10,7 @@ from cart.forms import CartAddProductForm
 #from .recommender import Recommender
 from django.db.models import Q
 
+
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
@@ -102,3 +103,9 @@ def user_login(request):
     return render(request, 'registration/login.html', {'form': form})
 
 
+def about(request):
+ return render(request,'shop/about.html',{})
+
+
+def contact(request):
+ return render(request,'shop/contact.html',{})
