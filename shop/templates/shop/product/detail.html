@@ -27,7 +27,7 @@
     transform: scale(1.5);
 }</style>
   <div class="zoom">
-    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"></div>
+    <img src="{% if product.image %}{{ product.image }}{% else %}{% static "img/no_image.png" %}{% endif %}"></div>
     <h1>{{ product.name }}</h1>
     <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
     <p class="price">${{ product.price }}</p>
@@ -41,8 +41,7 @@
     <div class="float_center">
     <div class="col-md-4">
    {% ratings product   %}
-    <button onclick="myFunction()">Comment ?</button>
-        <div id="myDIV" style="display: none">
+
     {% with comments.count as total_comments %}
       <h2>
          {{ total_comments }} comment{{ total_comments|pluralize }}
@@ -63,6 +62,8 @@
     {% if new_comment %}
        <h2>Your comment has been added.</h2>
     {% else %}
+         <button onclick="myFunction()">Click to add Comment</button>
+         <div id="myDIV" style="display: none">
        <h2>Add a new comment</h2>
        <form action="." method="post">
          {{ comment_form.as_p }}
