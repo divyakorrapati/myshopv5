@@ -9,12 +9,12 @@ def order_created(order_id):
     successfully created.
     """
     order = Order.objects.get(id=order_id)
-    subject = 'Order nr. {}'.format(order.id)
+    subject = 'Your order with Order id. {} is successfully placed'.format(order.id)
     message = 'Dear {},\n\nYou have successfully placed an order.\
                   Your order id is {}.'.format(order.first_name,
                                             order.id)
     mail_sent = send_mail(subject,
                           message,
-                          'admin@myshop.com',
+                          'v5storein@gmail.com',
                           [order.email])
     return mail_sent

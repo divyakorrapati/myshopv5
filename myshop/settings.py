@@ -166,8 +166,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'parimita.mohanty1295@gmail.com'
-EMAIL_HOST_PASSWORD = 'qwerty95'
+EMAIL_HOST_USER = 'v5storein@gmail.com'
+EMAIL_HOST_PASSWORD = 'isqa4900'
 #EMAIL_PORT = 2525
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

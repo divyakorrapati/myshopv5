@@ -11,6 +11,12 @@ def order_detail(obj):
     return mark_safe('<a href="{}">View</a>'.format(
         reverse('orders:admin_order_detail', args=[obj.id])))
 
+def order_pdf(obj):
+    return '<a href="{}">PDF</a>'.format(
+        reverse('orders:admin_order_pdf', args=[obj.id]))
+order_pdf.allow_tags = True
+order_pdf.short_description = 'PDF bill'
+
 
 def export_to_csv(modeladmin, request, queryset):
     opts = modeladmin.model._meta
@@ -58,3 +64,4 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
     actions = [export_to_csv]
+

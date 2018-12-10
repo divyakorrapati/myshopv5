@@ -13,4 +13,6 @@ django-heroku
 braintree
 eventlet # for windows 
 redis==2.10.6
+xhtml2pdf==0.2.3
+PyPDF2==1.26.0
 swapper==1.1.0

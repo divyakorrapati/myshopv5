@@ -1,8 +1,21 @@
 {% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+  Order {{ order.id }} {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    <a href="{% url "admin:index" %}">Home</a> &rsaquo;
+    <a href="{% url "admin:orders_order_changelist" %}">Orders</a>
+    &rsaquo;
+    <a href="{% url "admin:orders_order_change" order.id %}">Order {{ order.id }}</a>
+    &rsaquo; Detail
+  </div>
+{% endblock %}
 
 {% block content %}
-  <h1>Your payment was successful</h1>
-  <p>Your payment has been processed successfully.</p>
 <h1>Order {{ order.id }}</h1>
 <ul class="object-tools">
   <li>
@@ -28,7 +41,7 @@
   </tr>
   <tr>
     <th>Total amount</th>
-    <td>${{ order.get_total_cost|floatformat:"2" }}</td>
+    <td>${{ order.get_total_cost }}</td>
   </tr>
   <tr>
     <th>Status</th>
@@ -37,29 +50,29 @@
 </table>
 
 <div class="module">
-  <h2>Items bought</h2>
-  <div class="tabular">
-    <table style="width:100%">
+  <div class="tabular inline-related last-related">
+    <table>
+      <h2>Items bought</h2>
       <thead>
         <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
         {% for item in order.items.all %}
           <tr class="row{% cycle "1" "2" %}">
             <td>{{ item.product.name }}</td>
-            <td>${{ item.price }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>${{ item.get_cost }}</td>
+            <td class="num">${{ item.price }}</td>
+            <td class="num">{{ item.quantity }}</td>
+            <td class="num">${{ item.get_cost }}</td>
           </tr>
         {% endfor %}
         <tr class="total">
-          <td colspan="3">Total price after discount</td>
-          <td>${{ order.get_total_cost|floatformat:"2" }}</td>
+          <td colspan="3">Total</td>
+          <td class="num">${{ order.get_total_cost }}</td>
         </tr>
       </tbody>
     </table>

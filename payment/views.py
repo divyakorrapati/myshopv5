@@ -6,6 +6,8 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 #import weasyprint
 from io import BytesIO
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 def payment_process(request):
     order_id = request.session.get('order_id')
@@ -63,8 +65,22 @@ def payment_process(request):
 
 
 def payment_done(request):
-    return render(request, 'payment/done.html')
+    order_id = request.session.get('order_id')
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'payment/done.html',{'order': order})
 
 
 def payment_canceled(request):
-    return render(request, 'payment/canceled.html')
+    order_id = request.session.get('order_id')
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'payment/canceled.html',{'order': order})
+
+def cust_order_detail(obj):
+    return mark_safe('<a href="{}">View</a>'.format(
+        reverse('orders:cust_order_detail', args=[obj.id])))
+
+def cust_order_pdf(obj):
+    return '<a href="{}">PDF</a>'.format(
+        reverse('orders:cust_order_pdf', args=[obj.id]))
+cust_order_pdf.allow_tags = True
+cust_order_pdf.short_description = 'PDF bill'
