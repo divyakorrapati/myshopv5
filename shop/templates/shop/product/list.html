@@ -1,12 +1,10 @@
 {% extends "shop/base.html" %}
 {% load static %}
-{% load ratings %}
 {% block title %}
   {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 
 {% block content %}
-
 
   <div id="sidebar">
     <h3>Categories</h3>
@@ -26,14 +24,13 @@
     {% for product in products %}
       <div class="item">
         <a href="{{ product.get_absolute_url }}">
-          <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+          <img src="{% if product.image %}{{ product.image}}{% else %}{% static "img/no_image.png" %}{% endif %}">
         </a>
         <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
         ${{ product.price }},
         {{ product.size }},
         {{ product.color }}
-        <p>{{ ratings.count }}</p>
-          {% ratings product  %} </p>
+
       </div>
     {% endfor %}
   </div>
