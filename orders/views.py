@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 from shop.models import Category
 from django.core.mail import send_mail, EmailMessage
 
-@login_required
+
 def order_create(request):
     categories = Category.objects.all()
     cart = Cart(request)
