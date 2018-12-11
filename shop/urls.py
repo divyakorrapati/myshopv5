@@ -28,6 +28,6 @@ urlpatterns = [
          name='product_list_by_category'),
     path('<int:id>/<slug:slug>/', views.product_detail,
          name='product_detail'),
-    url(r'^/$', views.about, name='about'),
-    url(r'^/$', views.contact, name='contact'),
+    path('about', views.about, name='about'),
+    path('contact', views.contact, name='contact'),
 ]

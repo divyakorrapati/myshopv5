@@ -6,7 +6,7 @@
 <h1>Order {{ order.id }}</h1>
 <ul class="object-tools">
   <li>
-    <a href="#" onclick="window.print();">Print order</a>
+    <a href="{% url 'orders:admin_order_pdf' order_id=order.id %}">Print order</a>
   </li>
 </ul>
 <table>
