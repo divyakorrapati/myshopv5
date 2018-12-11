@@ -5,50 +5,44 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-{% block content %}
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body, html {
-    height: 100%;
+
+body {
+  font-family: Arial;
+  font-size: 17px;
 }
 
-.parallax {
-    /* The image used */
-    background-image: url("{% static 'img/bg.jpg' %}");
-
-
-    /* Full height */
-    height: 100%;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
-@media only screen and (max-device-width: 1366px) {
-    .parallax {
-        background-attachment: scroll;
-    }
+.container img {vertical-align: middle;}
+
+.container .content {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
 }
 </style>
 </head>
 <body>
 
-<h1>Welcome to the adventure world of clothing .
-    Started in 2018 We extend our services to the best possible in meeting our customer needs, desires and wants.
-</h1>
+<h2>Help Us get you a fashionable look ever!!</h2>
 
-<div class="parallax"></div>
-<img width="1px" src="{% static 'img/bg.jpg' %}">
-<div style="height:100px;background-color: #6DDCBD  ;font-size:36px">
-V5 Clothing is a place to explore the latest trends emerging in the fashion world! </div>
-
-<div class="parallax"></div>
+<div class="container">
+  <img src="https://i.ibb.co/pz7YK6R/apparel.jpg" alt="apparel" style="width:100%;">
+  <div class="content">
+    <h1>V5 Stores</h1>
+    <p>If your are in search of trying to change your look, Yes you are in the right place!!V5Store helps you select the desired outfit.V5Store’s, Inc. is one of the nation’s premier retailers started in 2017. V5Store’s, Inc. operates stores in 44 states, the District of Columbia, Guam and Puerto Rico. V5Store’s, Inc. has corporate offices in Omaha. Prior to June 1, 2017, V5Store’s, Inc. was known as V5apparel store.</p>
+  </div>
+</div>
 
 </body>
-{% endblock %}
 </html>
