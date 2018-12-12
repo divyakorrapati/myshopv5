@@ -27,6 +27,7 @@ def register(request):
       user_form = UserRegistrationForm()
       return render(request, 'shop/register.html', {'user_form': user_form})
 
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
