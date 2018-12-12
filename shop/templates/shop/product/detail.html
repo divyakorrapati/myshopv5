@@ -1,0 +1,88 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+{% load ratings %}
+{% load static %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="product-detail">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.zoom {
+    padding: 50px;
+    transition: transform .2s;
+    ;
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);
+}</style>
+  <div class="zoom">
+    <img src="{% if product.image %}{{ product.image }}{% else %}{% static "img/no_image.png" %}{% endif %}"></div>
+    <h1>{{ product.name }}</h1>
+    <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
+    <p class="price">${{ product.price }}</p>
+
+    <form action="{% url "cart:cart_add" product.id %}" method="post">
+      {{ cart_product_form }}
+      {% csrf_token %}
+      <input type="submit" value="Add to cart">
+    </form>
+  </div>
+    <div class="float_center">
+    <div class="col-md-4">
+   {% ratings product   %}
+
+    {% with comments.count as total_comments %}
+      <h2>
+         {{ total_comments }} comment{{ total_comments|pluralize }}
+      </h2>
+    {% endwith %}
+    {% for comment in comments %}
+      <div class="comment">
+       <p class="info">
+         Comment {{ forloop.counter }} by {{ comment.name }}
+         {{ comment.created }}
+       </p>
+       {{ comment.body|linebreaks }}
+      </div>
+    {% empty %}
+      <p>There are no comments yet.</p>
+    {% endfor %}
+
+    {% if new_comment %}
+       <h2>Your comment has been added.</h2>
+    {% else %}
+         <button onclick="myFunction()">Click to add Comment</button>
+         <div id="myDIV" style="display: none">
+       <h2>Add a new comment</h2>
+       <form action="." method="post">
+         {{ comment_form.as_p }}
+         {% csrf_token %}
+         <p><input type="submit" value="Add comment"></p>
+       </form>
+    {% endif %}
+    </div>
+    <script>
+   function myFunction() {
+       var x = document.getElementById("myDIV");
+       if (x.style.display === "none") {
+        x.style.display = "block";
+       }
+       else {
+        x.style.display = "none";
+       }
+       }
+    </script>
+    </div>
+    </div>
+{% endblock %}

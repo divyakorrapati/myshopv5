@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title><h3>{% block title %}V5 Clothing</h3>{% endblock %}</title>
+  <link href="{% static "css/base.css" %}" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+</head>
+<body>
+  <div id="subheader">
+  <ul id="ul li">
+      <li><a class="navbar-brand"  href="{% url "shop:product_list" %}"><img width="50px" src="{% static 'img/V5Logo.png' %}"> </a> <span><a class="logo" href="{% url "shop:product_list" %}">V5 Clothing</a></span></li>
+
+           <li> <form action="" method="GET" accept-charset="utf-8">
+		<input name="q" type="text" placeholder="Search Products" style="width: 500px "  value= "{{ request.GET.q }}" id="search_prod"/>
+			<input type="submit"  value="Search" class="btn" />
+	</form></li>
+    <li><div class="cart">
+      {% with total_items=cart|length %}
+          {% if cart|length > 0 %}
+            <img alt="Your cart" width="25" height="25" src="{% static 'img/cart.png' %}"/>
+            <a href="{% url "cart:cart_detail" %}">
+              {{ total_items }} item{{ total_items|pluralize }},
+              ${{ cart.get_total_price }}
+            </a>
+          {% else %}
+            <img alt="Your cart" width="25" height="25" src="{% static 'img/cart.png' %}">
+          {% endif %}</div></li>
+         <li>
+                {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="caret"></span>
+                        </a>
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li><a href="{% url 'shop:password_change' %}"><i class="fa fa-btn fa-sign-out"></i>Change Password</a></li>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="{% url 'shop:register' %}"><i class="glyphicon glyphicon-log-in"></i>SignUp</a></li>
+                {% endif %}
+         {% endwith %} </ul>
+          <ul id="ul li2" >
+          <li2>
+          <a href="{% url "shop:product_list" %}">Home</a>
+          </li2>
+
+          {% for c in categories %}
+        <li2 {% if category.slug == c.slug %}class="selected"{% endif %}>
+          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li2>
+      {% endfor %}
+   <li2 ><a href="{% url "shop:about" %}">About Us</a></li2>
+               <li2><a href="{% url "shop:contact" %}">Contact Us</a></li2>
+                <li2><a href="{% url "shop:product_list" %}">Special Deals</a></li2>
+      </li2>
+    </ul>
+    </div>
+  <div id="content">
+    {% block content %}
+
+    {% endblock %}
+  </div>
+   <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
+</body>
+</html>

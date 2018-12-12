@@ -1,0 +1,22 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+    {% if form.errors %}
+    <br />
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <br />
+    <br />
+    <div class="login-form">
+    <form method="post" action="{% url 'login' %}">
+        <p>Please, use the following form to log-in. If you don't have an account <a href="{% url "shop:register" %}">Sign Up Here</a></p>
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><a href="{% url "shop:password_reset" %}">Forgotten your password?</a></p>
+        <p><input type="submit" value="Login"/></p>
+
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+    </div>
+
+{% endblock %}

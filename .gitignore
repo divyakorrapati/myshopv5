@@ -1,0 +1,8 @@
+*.pyc
+*~
+__pycache__
+db.sqlite3
+myvenv
+.DS_Store
+.idea/workspace.xml
+myshop/local_settings.py

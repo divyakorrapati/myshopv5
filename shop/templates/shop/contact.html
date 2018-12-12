@@ -1,0 +1,61 @@
+
+<div class="nav">
+    {% extends "shop/base.html" %}
+</div>
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+    height: 100%;
+}
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+.parallax {
+    /* The image used */
+
+
+
+    /* Full height */
+    height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1><p align="center">Feel free to get in touch with us!!</p></h1>
+
+
+<h2><p align="center">Have Questions about your orders ??</p></h2>
+<h2><p align="center">Give us a call @ +17323258641</p></h2>
+<h2><p align="center">or</p></h2>
+<h2><p align="center">Shoot us a mail to v5storein@gmail.com</p></h2>
+<h2><p align="center">will shall get back to you on the same day!!</p></h2>
+<div>
+
+   <h2> <p  style="color:black;"  style="width:40px;height:40px;" align="center"> Catch us@  any of the following </p></h2>
+   <p align="center"> <a href="http://twitter.com"> <img src="https://i.ibb.co/H2sGqVx/twitter.png" width="100" height="100"></a> <a href="mailto:{{ site.email }}"><img src="https://i.ibb.co/NNmbg8w/email.png" width="100" height="100"></a>  <a href="https://www.facebook.com"> <img src="https://i.ibb.co/B6L94Ds/facebook.png" width="100" height="100"></a> <a href="https://www.instagram.com"> <img src="https://i.ibb.co/grngR1L/instagram.png" width="100" height="100"></a>
+</div>
+
+<div class="parallax"></div>
+
+</body>
+{% endblock %}
+</html>

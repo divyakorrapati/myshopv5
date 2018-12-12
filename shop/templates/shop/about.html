@@ -1,0 +1,53 @@
+
+<div class="nav">
+    {% extends "shop/base.html" %}
+</div>
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+<style>
+
+body {
+  font-family: 'Lobster', cursive;
+  font-size: 17px;
+}
+
+.container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.container img {vertical-align: middle;}
+
+.container .contents {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 0px;
+}
+</style>
+</head>
+<body>
+
+<h2>Help Us get you a fashionable look ever!!</h2>
+
+<div class="container">
+  <img src="https://i.ibb.co/pz7YK6R/apparel.jpg" alt="apparel" style="width:100%;">
+  <div class="contents">
+    <h1> V5 Stores</h1>
+    <p> If your are in search of trying to change your look, Yes you are in the right place!!V5Store helps you select the
+        desired outfit.V5Store’s, Inc. is one of the nation’s premier retailers started in 2017.
+        V5Store’s, Inc. operates stores in 44 states, the District of Columbia, Guam and Puerto Rico.
+        V5Store’s, Inc. has corporate offices in Omaha. Prior to June 1, 2017, V5Store’s, Inc. was known as V5apparel store. </p>
+  </div>
+</div>
+
+</body>
+{% endblock %}
+</html>
