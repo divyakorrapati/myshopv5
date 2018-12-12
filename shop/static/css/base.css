@@ -186,7 +186,7 @@ ul.errorlist {
 #content .float_center {
   float: right;
   position: relative;
-  left: -28%; /* or right 50% */
+  left: -22%; /* or right 50% */
   text-align: left;
 }
 .float_center > .child {
