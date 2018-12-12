@@ -110,7 +110,7 @@ def generate_order_pdf(request, order_id):
         return pdf
 
 
-@staff_member_required
+
 def admin_order_pdf(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     print(order.id, order.first_name)
