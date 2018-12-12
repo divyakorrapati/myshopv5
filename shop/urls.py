@@ -17,6 +17,7 @@ urlpatterns = [
     # change password urls
     #url(r'^password-change/$', pwd_change, name='password_change'),
     url(r'^password-change/done/$', pwd_change_done, name='password_change_done'),
+   # url(r'^password-change/$', pwd_change, {'post_change_redirect': '/password-change/done/'}, name='password_change'),
     url(r'^password-change/$', pwd_change, {'post_change_redirect': '/password-change/done/'}, name='password_change'),
 # restore password urls
     url(r'^password-reset/complete/$', reset_complete, name='password_reset_complete'),
