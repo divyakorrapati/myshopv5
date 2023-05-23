@@ -6,7 +6,7 @@ django-crispy-forms==1.7.2
 django-mathfilters==0.4.0
 gunicorn==19.9.0
 pytz==2018.5
-requests==2.19.1
+requests==2.31.0
 urllib3==1.23
 whitenoise==4.1
 django-heroku
